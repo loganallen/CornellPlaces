@@ -15,8 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        let mapVC = MapViewController()
+        let navigationController = UINavigationController(rootViewController: mapVC)
+        navigationController.isNavigationBarHidden = true
+        
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = MapViewController()
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         
         return true

@@ -24,32 +24,37 @@ struct Locations {
 
 class MapViewController: UIViewController {
     
-    var placesTableViewController: UIViewController!
+    var placesVC: UIViewController!
     
     var locationManager: CLLocationManager!
     var mapView: MKMapView!
     let regionRadius: CLLocationDistance = 3600
+    
+    var placesButton: UIView!
+    var tapGestureRecognizer: UITapGestureRecognizer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = UIColor.gray
-        
-        initializeMapView()
         
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         
-        view = mapView
+        initializeMapView()
         
         DispatchQueue.global(qos: .userInitiated).async {
             self.getLocationObjects()
             DispatchQueue.main.async {
-                self.placesTableViewController = UIViewController()
+                print("Back to main thread")
+                self.placesVC = PlacesViewController()
             }
         }
-        print("Done loading mapVC")
+        
+        initializeButtons()
+        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MapViewController.handleTap(_:)))
+        tapGestureRecognizer.delegate = self
+        tapGestureRecognizer.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     // Initialize the main map view
@@ -62,6 +67,18 @@ class MapViewController: UIViewController {
         let initLoc = CLLocationCoordinate2D(latitude: 42.451284, longitude: -76.484155)
         let camera = MKMapCamera(lookingAtCenter: initLoc, fromDistance: regionRadius, pitch: 0.0, heading: 0.0)
         mapView.setCamera(camera, animated: false)
+        view = mapView
+    }
+    
+    func initializeButtons() {
+        let topY = UIScreen.main.bounds.height - 66
+        placesButton = UIView(frame: CGRect(x: 16, y: topY, width: 50, height: 50))
+        placesButton.backgroundColor = UIColor.white
+        placesButton.layer.shadowColor = UIColor.black.cgColor
+        placesButton.layer.shadowOpacity = 0.5
+        placesButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        placesButton.layer.shadowRadius = 5
+        view.addSubview(placesButton)
     }
     
     // Get all location objects
@@ -95,7 +112,7 @@ class MapViewController: UIViewController {
             exit(0)
         }
         Locations.mapping[id] = loc
-        print("Length: \(Locations.mapping.count)")
+//        print("Length: \(Locations.mapping.count)")
     }
     
     // Center map view to specified location
@@ -104,6 +121,18 @@ class MapViewController: UIViewController {
 //        mapView.setRegion(region, animated: true)
 //    }
 
+}
+
+extension MapViewController: UIGestureRecognizerDelegate {
+    func handleTap(_ sender: UITapGestureRecognizer) {
+        let tapPoint = sender.location(in: view)
+        if sender.state == .ended {
+            if placesButton.frame.contains(tapPoint) {
+                print("Tapped places button.")
+                navigationController?.pushViewController(placesVC, animated: true)
+            }
+        }
+    }
 }
 
 extension MapViewController: LocationDelegate {
