@@ -11,6 +11,8 @@
 		02A734921E1356E4009560F5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A734911E1356E4009560F5 /* MapViewController.swift */; };
 		02A734971E1356E4009560F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A734961E1356E4009560F5 /* Assets.xcassets */; };
 		02A7349A1E1356E4009560F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A734981E1356E4009560F5 /* LaunchScreen.storyboard */; };
+		02A734A21E1367C8009560F5 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A734A11E1367C8009560F5 /* Location.swift */; };
+		F015C68D79CC32E62AADFB78 /* Pods_CornellPlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F016FDAC0DC899D79DC7CD7 /* Pods_CornellPlaces.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,10 @@
 		02A734961E1356E4009560F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02A734991E1356E4009560F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02A7349B1E1356E4009560F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02A734A11E1367C8009560F5 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		311FBF582BB2AB69EE0A6769 /* Pods-CornellPlaces.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CornellPlaces.release.xcconfig"; path = "Pods/Target Support Files/Pods-CornellPlaces/Pods-CornellPlaces.release.xcconfig"; sourceTree = "<group>"; };
+		6F016FDAC0DC899D79DC7CD7 /* Pods_CornellPlaces.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CornellPlaces.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFCECBCD2F26B4C2C89C7365 /* Pods-CornellPlaces.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CornellPlaces.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CornellPlaces/Pods-CornellPlaces.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F015C68D79CC32E62AADFB78 /* Pods_CornellPlaces.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +45,8 @@
 			children = (
 				02A7348E1E1356E4009560F5 /* CornellPlaces */,
 				02A7348D1E1356E4009560F5 /* Products */,
+				5566C67283DF23062D49244A /* Pods */,
+				A2A4B80F1E3E3FC0B714E289 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,11 +63,29 @@
 			children = (
 				02A7348F1E1356E4009560F5 /* AppDelegate.swift */,
 				02A734911E1356E4009560F5 /* MapViewController.swift */,
+				02A734A11E1367C8009560F5 /* Location.swift */,
 				02A734961E1356E4009560F5 /* Assets.xcassets */,
 				02A734981E1356E4009560F5 /* LaunchScreen.storyboard */,
 				02A7349B1E1356E4009560F5 /* Info.plist */,
 			);
 			path = CornellPlaces;
+			sourceTree = "<group>";
+		};
+		5566C67283DF23062D49244A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AFCECBCD2F26B4C2C89C7365 /* Pods-CornellPlaces.debug.xcconfig */,
+				311FBF582BB2AB69EE0A6769 /* Pods-CornellPlaces.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A2A4B80F1E3E3FC0B714E289 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6F016FDAC0DC899D79DC7CD7 /* Pods_CornellPlaces.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -68,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 02A7349E1E1356E4009560F5 /* Build configuration list for PBXNativeTarget "CornellPlaces" */;
 			buildPhases = (
+				971C2EED9DEB8FD56FCBEE7E /* [CP] Check Pods Manifest.lock */,
 				02A734881E1356E4009560F5 /* Sources */,
 				02A734891E1356E4009560F5 /* Frameworks */,
 				02A7348A1E1356E4009560F5 /* Resources */,
+				CA12287809ED4958F518B25D /* [CP] Embed Pods Frameworks */,
+				47E9D9FD1D847CAE201F2548 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -128,12 +158,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		47E9D9FD1D847CAE201F2548 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CornellPlaces/Pods-CornellPlaces-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		971C2EED9DEB8FD56FCBEE7E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CA12287809ED4958F518B25D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CornellPlaces/Pods-CornellPlaces-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		02A734881E1356E4009560F5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				02A734921E1356E4009560F5 /* MapViewController.swift in Sources */,
+				02A734A21E1367C8009560F5 /* Location.swift in Sources */,
 				02A734901E1356E4009560F5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,6 +324,7 @@
 		};
 		02A7349F1E1356E4009560F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AFCECBCD2F26B4C2C89C7365 /* Pods-CornellPlaces.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = R8MGTW9Q8N;
@@ -258,6 +338,7 @@
 		};
 		02A734A01E1356E4009560F5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 311FBF582BB2AB69EE0A6769 /* Pods-CornellPlaces.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = R8MGTW9Q8N;

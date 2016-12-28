@@ -9,6 +9,11 @@
 import UIKit
 import MapKit
 
+protocol LocationDelegate {
+    func didTapLocation(_ id: String)
+    func didTapCategory(_ category: String)
+}
+
 class MapViewController: UIViewController {
     
     var locationManager: CLLocationManager!
@@ -20,8 +25,7 @@ class MapViewController: UIViewController {
         
         view.backgroundColor = UIColor.gray
         
-        mapView = MKMapView()
-        setupMap()
+        initializeMapView()
         
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -31,15 +35,16 @@ class MapViewController: UIViewController {
         
     }
     
-    // Set up map view attributes
-    func setupMap() {
+    // Initialize the main map view
+    func initializeMapView() {
+        mapView = MKMapView()
+        mapView.delegate = self
         mapView.mapType = .standard
+        
         let initLoc = CLLocationCoordinate2D(latitude: 42.451284, longitude: -76.484155)
         let camera = MKMapCamera(lookingAtCenter: initLoc, fromDistance: regionRadius, pitch: 0.0, heading: 0.0)
         mapView.setCamera(camera, animated: false)
     }
-    
-    
     
     // Center map view to specified location
 //    func centerMap(_ location: CLLocationCoordinate2D) {
@@ -47,6 +52,15 @@ class MapViewController: UIViewController {
 //        mapView.setRegion(region, animated: true)
 //    }
 
+}
+
+extension MapViewController: LocationDelegate {
+    internal func didTapLocation(_ locationId: String) {
+        return
+    }
+    internal func didTapCategory(_ category: String) {
+        return
+    }
 }
 
 // MARK - Map View delegate methods
