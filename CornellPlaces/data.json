@@ -1,0 +1,315 @@
+[
+ {
+ "UId":"1",
+ "Category":["Fitness Centers"],
+ "Name":"Appel Commons",
+ "Latitude":42.453569,
+ "Longitude":-76.476101
+ },
+ {
+ "UId":"2",
+ "Category":["Fitness Centers"],
+ "Name":"Helen Newman Hall",
+ "Latitude":42.452959,
+ "Longitude":-76.477354
+ },
+ {
+ "UId":"3",
+ "Category":["Fitness Centers"],
+ "Name":"Noyes Community and Recreation Center",
+ "Latitude":42.446462,
+ "Longitude":-76.488018
+ },
+ {
+ "UId":"4",
+ "Category":["Fitness Centers"],
+ "Name":"Teagle Hall",
+ "Latitude":42.445773,
+ "Longitude":-76.479075
+ },
+ {
+ "UId":"5",
+ "Category":["Law School"],
+ "Name":"Anabel Taylor Hall",
+ "Latitude":42.444933,
+ "Longitude":-76.485615
+ },
+ {
+ "UId":"6",
+ "Category":["Law School"],
+ "Name":"Myron Taylor Hall",
+ "Latitude":42.444024,
+ "Longitude":-76.485592
+ },
+ {
+ "UId":"7",
+ "Category":["Law School"],
+ "Name":"Myron Taylor Jane Foster Library Addition",
+ "Latitude":42.443742,
+ "Longitude":-76.485784
+ },
+ {
+ "UId":"8",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:West Campus",
+ "Name":"Hot Truck",
+ "Latitude":42.448829,
+ "Longitude":-76.490321
+ },
+ {
+ "UId":"9",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:North Campus",
+ "Name":"Louie's Lunch Truck",
+ "Latitude":42.453349,
+ "Longitude":-76.481123
+ },
+ {
+ "UId":"10",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:North Campus",
+ "Name":"North Star Dining (Appel)",
+ "Latitude":42.453520,
+ "Longitude":-76.476076
+ },
+ {
+ "UId":"11",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:North Campus",
+ "Name":"Sweet Sensations",
+ "Latitude":42.453672,
+ "Longitude":-76.476197
+ },
+ {
+ "UId":"12",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:North Campus",
+ "Name":"RPCC",
+ "Latitude":42.456050,
+ "Longitude":-76.477464
+ },
+ {
+ "UId":"13",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:North Campus",
+ "Name":"Bear Necessities",
+ "Latitude":42.455783,
+ "Longitude":-76.477519
+ },
+ {
+ "UId":"14",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Green Dragon Cafe",
+ "Latitude":42.450814,
+ "Longitude":-76.484010
+ },
+ {
+ "UId":"15",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Temple of Zeus",
+ "Latitude":42.448934,
+ "Longitude":-76.483582
+ },
+ {
+ "UId":"16",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Amit Bhatia Libe Cafe",
+ "Latitude":42.448080,
+ "Longitude":-76.484586
+ },
+ {
+ "UId":"17",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Cafe Jennie",
+ "Latitude":42.446685,
+ "Longitude":-76.484204
+ },
+ {
+ "UId":"18",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"The Ivy Room",
+ "Latitude":42.446717,
+ "Longitude":-76.485636
+ },
+ {
+ "UId":"19",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Okenshields Dining Room",
+ "Latitude":42.446479,
+ "Longitude":-76.485428
+ },
+ {
+ "UId":"20",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Atrium Cafe",
+ "Latitude":42.445787,
+ "Longitude":-76.483281
+ },
+ {
+ "UId":"21",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Mattin's Cafe",
+ "Latitude":42.444364,
+ "Longitude":-76.482362
+ },
+ {
+ "UId":"22",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Fork and Gravel Cafe",
+ "Latitude":42.443563,
+ "Longitude":-76.486025
+ },
+ {
+ "UId":"23",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Mac's Cafe",
+ "Latitude":42.445862,
+ "Longitude":-76.482096
+ },
+ {
+ "UId":"24",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"The Terrace",
+ "Latitude":42.446450,
+ "Longitude":-76.482274
+ },
+ {
+ "UId":"25",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Taverna Banfi",
+ "Latitude":42.446483,
+ "Longitude":-76.482227
+ },
+ {
+ "UId":"26",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Rusty's",
+ "Latitude":42.447216,
+ "Longitude":-76.482148
+ },
+ {
+ "UId":"27",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:West Campus",
+ "Name":"Jansen's Market",
+ "Latitude":42.446489,
+ "Longitude":-76.487913
+ },
+ {
+ "UId":"28",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Gimme! Coffee",
+ "Latitude":42.444962,
+ "Longitude":-76.481168
+ },
+ {
+ "UId":"29",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Synapsis Cafe",
+ "Latitude":42.446876,
+ "Longitude":-76.477530
+ },
+ {
+ "UId":"30",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Big Red Barn",
+ "Latitude":42.446876,
+ "Longitude":-76.477530
+ },
+ {
+ "UId":"31",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Trillium Dining Hall",
+ "Latitude":42.448109,
+ "Longitude":-76.479092
+ },
+ {
+ "UId":"32",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Bus Stop Bagels",
+ "Latitude":42.447836,
+ "Longitude":-76.479405
+ },
+ {
+ "UId":"33",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Manndible Cafe",
+ "Latitude":42.447836,
+ "Longitude":-76.479405
+ },
+ {
+ "UId":"34",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Martha's Cafe",
+ "Latitude":42.450062,
+ "Longitude":-76.479225
+ },
+ {
+ "UId":"35",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Goldie's",
+ "Latitude":42.450096,
+ "Longitude":-76.481422
+ },
+ {
+ "UId":"36",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Franny's",
+ "Latitude":42.451027,
+ "Longitude":-76.483890
+ },
+ {
+ "UId":"37",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Cornell Dairy Bar",
+ "Latitude":42.447314,
+ "Longitude":-76.470923
+ },
+ {
+ "UId":"38",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Bear's Den",
+ "Latitude":42.446754,
+ "Longitude":-76.485560
+ },
+ {
+ "UId":"39",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:Central Campus",
+ "Name":"Carol's Cafe",
+ "Latitude":42.453300,
+ "Longitude":-76.479172
+ },
+ {
+ "UId":"40",
+ "Category":["Eateries"],
+ "SubCategory":"Eateries:West Campus",
+ "Name":"104 West! (Kosher Dining Hall)",
+ "Latitude":42.444313,
+ "Longitude":-76.487907
+ },
+]
