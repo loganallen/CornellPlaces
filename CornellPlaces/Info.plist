@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>See your current location with respect to locations nearby</string>
+	<string>See your current location with respect to places nearby</string>
 	<key>CFBundleDisplayName</key>
 	<string>CornellPlaces</string>
 	<key>CFBundleExecutable</key>
