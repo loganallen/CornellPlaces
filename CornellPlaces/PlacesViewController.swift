@@ -173,7 +173,7 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource, Cate
         if let (curSec, curObj) = currentlyExpandedSection {
             // Collapse currently expanded section
             curObj.isExpanded = false
-            (tableView.headerView(forSection: curSec) as! CategoryTableViewHeader).isExpanded = false
+            (tableView.headerView(forSection: curSec) as! CategoryTableViewHeader).setExpanded(willExpand: false)
             for i in 0..<(curObj.subCategories.count + curObj.numberOfLocations) {
                 tableView.reloadRows(at: [NSIndexPath(row: i, section: curSec) as IndexPath], with: .top)
             }
@@ -186,7 +186,7 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource, Cate
                 tableView.reloadRows(at: [NSIndexPath(row: i, section: section) as IndexPath], with: .bottom)
             }
             categoryObj.isExpanded = true
-            header.isExpanded = true
+            header.setExpanded(willExpand: true)
             currentlyExpandedSection = (section, categoryObj)
         }
         

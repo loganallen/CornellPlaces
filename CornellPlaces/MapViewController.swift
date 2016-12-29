@@ -89,7 +89,6 @@ extension MapViewController: UIGestureRecognizerDelegate {
         let tapPoint = sender.location(in: view)
         if sender.state == .ended {
             if placesButton.frame.contains(tapPoint) {
-                print("Tapped places button.")
                 navigationController?.pushViewController(placesVC, animated: true)
             }
         }
