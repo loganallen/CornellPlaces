@@ -12,10 +12,15 @@
 		02A734971E1356E4009560F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A734961E1356E4009560F5 /* Assets.xcassets */; };
 		02A7349A1E1356E4009560F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A734981E1356E4009560F5 /* LaunchScreen.storyboard */; };
 		02A734A21E1367C8009560F5 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A734A11E1367C8009560F5 /* Location.swift */; };
-		02A734A41E13851F009560F5 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 02A734A31E13851F009560F5 /* data.json */; };
+		02A734A41E13851F009560F5 /* locationData.json in Resources */ = {isa = PBXBuildFile; fileRef = 02A734A31E13851F009560F5 /* locationData.json */; };
 		02A734A61E138FAB009560F5 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A734A51E138FAA009560F5 /* API.swift */; };
 		02A734A81E139D6A009560F5 /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A734A71E139D6A009560F5 /* PlacesViewController.swift */; };
 		02A734AA1E13A0EB009560F5 /* UIColor+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A734A91E13A0EB009560F5 /* UIColor+Shared.swift */; };
+		02A734AD1E1451FB009560F5 /* CategoryTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A734AB1E1451FB009560F5 /* CategoryTableViewHeader.swift */; };
+		02A734BB1E14A6D9009560F5 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A734BA1E14A6D9009560F5 /* Category.swift */; };
+		02A734BD1E14B23E009560F5 /* categoryData.json in Resources */ = {isa = PBXBuildFile; fileRef = 02A734BC1E14B23E009560F5 /* categoryData.json */; };
+		02A734BF1E14BB14009560F5 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 02A734BE1E14BB14009560F5 /* data.json */; };
+		02A734C21E14D6B5009560F5 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A734C01E14D6B5009560F5 /* CategoryTableViewCell.swift */; };
 		F015C68D79CC32E62AADFB78 /* Pods_CornellPlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F016FDAC0DC899D79DC7CD7 /* Pods_CornellPlaces.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,10 +32,15 @@
 		02A734991E1356E4009560F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02A7349B1E1356E4009560F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02A734A11E1367C8009560F5 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		02A734A31E13851F009560F5 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		02A734A31E13851F009560F5 /* locationData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = locationData.json; sourceTree = "<group>"; };
 		02A734A51E138FAA009560F5 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		02A734A71E139D6A009560F5 /* PlacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		02A734A91E13A0EB009560F5 /* UIColor+Shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Shared.swift"; sourceTree = "<group>"; };
+		02A734AB1E1451FB009560F5 /* CategoryTableViewHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewHeader.swift; sourceTree = "<group>"; };
+		02A734BA1E14A6D9009560F5 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		02A734BC1E14B23E009560F5 /* categoryData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = categoryData.json; sourceTree = "<group>"; };
+		02A734BE1E14BB14009560F5 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		02A734C01E14D6B5009560F5 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		311FBF582BB2AB69EE0A6769 /* Pods-CornellPlaces.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CornellPlaces.release.xcconfig"; path = "Pods/Target Support Files/Pods-CornellPlaces/Pods-CornellPlaces.release.xcconfig"; sourceTree = "<group>"; };
 		6F016FDAC0DC899D79DC7CD7 /* Pods_CornellPlaces.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CornellPlaces.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFCECBCD2F26B4C2C89C7365 /* Pods-CornellPlaces.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CornellPlaces.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CornellPlaces/Pods-CornellPlaces.debug.xcconfig"; sourceTree = "<group>"; };
@@ -70,17 +80,70 @@
 			isa = PBXGroup;
 			children = (
 				02A7348F1E1356E4009560F5 /* AppDelegate.swift */,
-				02A734A51E138FAA009560F5 /* API.swift */,
-				02A734911E1356E4009560F5 /* MapViewController.swift */,
-				02A734A71E139D6A009560F5 /* PlacesViewController.swift */,
-				02A734A11E1367C8009560F5 /* Location.swift */,
-				02A734A91E13A0EB009560F5 /* UIColor+Shared.swift */,
-				02A734A31E13851F009560F5 /* data.json */,
-				02A734961E1356E4009560F5 /* Assets.xcassets */,
+				02A734B61E14A11F009560F5 /* Controllers */,
+				02A734B51E14A119009560F5 /* Models */,
+				02A734B71E14A12B009560F5 /* Views */,
+				02A734B81E14A13E009560F5 /* Utilities */,
+				02A734B41E14A107009560F5 /* Resources */,
 				02A734981E1356E4009560F5 /* LaunchScreen.storyboard */,
-				02A7349B1E1356E4009560F5 /* Info.plist */,
 			);
 			path = CornellPlaces;
+			sourceTree = "<group>";
+		};
+		02A734B31E14A0FC009560F5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				02A734AB1E1451FB009560F5 /* CategoryTableViewHeader.swift */,
+				02A734C01E14D6B5009560F5 /* CategoryTableViewCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		02A734B41E14A107009560F5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				02A734A31E13851F009560F5 /* locationData.json */,
+				02A734BC1E14B23E009560F5 /* categoryData.json */,
+				02A734BE1E14BB14009560F5 /* data.json */,
+				02A734961E1356E4009560F5 /* Assets.xcassets */,
+				02A7349B1E1356E4009560F5 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		02A734B51E14A119009560F5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				02A734A11E1367C8009560F5 /* Location.swift */,
+				02A734BA1E14A6D9009560F5 /* Category.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		02A734B61E14A11F009560F5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				02A734911E1356E4009560F5 /* MapViewController.swift */,
+				02A734A71E139D6A009560F5 /* PlacesViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		02A734B71E14A12B009560F5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				02A734B31E14A0FC009560F5 /* Cells */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		02A734B81E14A13E009560F5 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				02A734A51E138FAA009560F5 /* API.swift */,
+				02A734A91E13A0EB009560F5 /* UIColor+Shared.swift */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		5566C67283DF23062D49244A /* Pods */ = {
@@ -164,7 +227,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				02A7349A1E1356E4009560F5 /* LaunchScreen.storyboard in Resources */,
-				02A734A41E13851F009560F5 /* data.json in Resources */,
+				02A734BF1E14BB14009560F5 /* data.json in Resources */,
+				02A734BD1E14B23E009560F5 /* categoryData.json in Resources */,
+				02A734A41E13851F009560F5 /* locationData.json in Resources */,
 				02A734971E1356E4009560F5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,7 +294,10 @@
 				02A734AA1E13A0EB009560F5 /* UIColor+Shared.swift in Sources */,
 				02A734A81E139D6A009560F5 /* PlacesViewController.swift in Sources */,
 				02A734A61E138FAB009560F5 /* API.swift in Sources */,
+				02A734AD1E1451FB009560F5 /* CategoryTableViewHeader.swift in Sources */,
 				02A734901E1356E4009560F5 /* AppDelegate.swift in Sources */,
+				02A734BB1E14A6D9009560F5 /* Category.swift in Sources */,
+				02A734C21E14D6B5009560F5 /* CategoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

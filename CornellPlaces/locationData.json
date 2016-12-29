@@ -1,0 +1,242 @@
+[
+  {
+  "LocId":"1",
+  "Name":"Appel Commons",
+  "Latitude":42.453569,
+  "Longitude":-76.476101
+  },
+  {
+  "LocId":"2",
+  "Name":"Helen Newman Hall",
+  "Latitude":42.452959,
+  "Longitude":-76.477354
+  },
+  {
+  "LocId":"3",
+  "Name":"Noyes Community and Recreation Center",
+  "Latitude":42.446462,
+  "Longitude":-76.488018
+  },
+  {
+  "LocId":"4",
+  "Name":"Teagle Hall",
+  "Latitude":42.445773,
+  "Longitude":-76.479075
+  },
+  {
+  "LocId":"5",
+  "Name":"Anabel Taylor Hall",
+  "Latitude":42.444933,
+  "Longitude":-76.485615
+  },
+  {
+  "LocId":"6",
+  "Name":"Myron Taylor Hall",
+  "Latitude":42.444024,
+  "Longitude":-76.485592
+  },
+  {
+  "LocId":"7",
+  "Name":"Myron Taylor Jane Foster Library Addition",
+  "Latitude":42.443742,
+  "Longitude":-76.485784
+  },
+  {
+  "LocId":"8",
+  "Name":"Hot Truck",
+  "Latitude":42.448829,
+  "Longitude":-76.490321
+  },
+  {
+  "LocId":"9",
+  "Name":"Louie's Lunch Truck",
+  "Latitude":42.453349,
+  "Longitude":-76.481123
+  },
+  {
+  "LocId":"10",
+  "Name":"North Star Dining (Appel)",
+  "Latitude":42.453520,
+  "Longitude":-76.476076
+  },
+  {
+  "LocId":"11",
+  "Name":"Sweet Sensations",
+  "Latitude":42.453672,
+  "Longitude":-76.476197
+  },
+  {
+  "LocId":"12",
+  "Name":"RPCC",
+  "Latitude":42.456050,
+  "Longitude":-76.477464
+  },
+  {
+  "LocId":"13",
+  "Name":"Bear Necessities",
+  "Latitude":42.455783,
+  "Longitude":-76.477519
+  },
+  {
+  "LocId":"14",
+  "Name":"Green Dragon Cafe",
+  "Latitude":42.450814,
+  "Longitude":-76.484010
+  },
+  {
+  "LocId":"15",
+  "Name":"Temple of Zeus",
+  "Latitude":42.448934,
+  "Longitude":-76.483582
+  },
+  {
+  "LocId":"16",
+  "Name":"Amit Bhatia Libe Cafe",
+  "Latitude":42.448080,
+  "Longitude":-76.484586
+  },
+  {
+  "LocId":"17",
+  "Name":"Cafe Jennie",
+  "Latitude":42.446685,
+  "Longitude":-76.484204
+  },
+  {
+  "LocId":"18",
+  "Name":"The Ivy Room",
+  "Latitude":42.446717,
+  "Longitude":-76.485636
+  },
+  {
+  "LocId":"19",
+  "Name":"Okenshields Dining Room",
+  "Latitude":42.446479,
+  "Longitude":-76.485428
+  },
+  {
+  "LocId":"20",
+  "Name":"Atrium Cafe",
+  "Latitude":42.445787,
+  "Longitude":-76.483281
+  },
+  {
+  "LocId":"21",
+  "Name":"Mattin's Cafe",
+  "Latitude":42.444364,
+  "Longitude":-76.482362
+  },
+  {
+  "LocId":"22",
+  "Name":"Fork and Gravel Cafe",
+  "Latitude":42.443563,
+  "Longitude":-76.486025
+  },
+  {
+  "LocId":"23",
+  "Name":"Mac's Cafe",
+  "Latitude":42.445862,
+  "Longitude":-76.482096
+  },
+  {
+  "LocId":"24",
+  "Name":"The Terrace",
+  "Latitude":42.446450,
+  "Longitude":-76.482274
+  },
+  {
+  "LocId":"25",
+  "Name":"Taverna Banfi",
+  "Latitude":42.446483,
+  "Longitude":-76.482227
+  },
+  {
+  "LocId":"26",
+  "Name":"Rusty's",
+  "Latitude":42.447216,
+  "Longitude":-76.482148
+  },
+  {
+  "LocId":"27",
+  "Name":"Jansen's Market",
+  "Latitude":42.446489,
+  "Longitude":-76.487913
+  },
+  {
+  "LocId":"28",
+  "Name":"Gimme! Coffee",
+  "Latitude":42.444962,
+  "Longitude":-76.481168
+  },
+  {
+  "LocId":"29",
+  "Name":"Synapsis Cafe",
+  "Latitude":42.446876,
+  "Longitude":-76.477530
+  },
+  {
+  "LocId":"30",
+  "Name":"Big Red Barn",
+  "Latitude":42.446876,
+  "Longitude":-76.477530
+  },
+  {
+  "LocId":"31",
+  "Name":"Trillium Dining Hall",
+  "Latitude":42.448109,
+  "Longitude":-76.479092
+  },
+  {
+  "LocId":"32",
+  "Name":"Bus Stop Bagels",
+  "Latitude":42.447836,
+  "Longitude":-76.479405
+  },
+  {
+  "LocId":"33",
+  "Name":"Manndible Cafe",
+  "Latitude":42.447836,
+  "Longitude":-76.479405
+  },
+  {
+  "LocId":"34",
+  "Name":"Martha's Cafe",
+  "Latitude":42.450062,
+  "Longitude":-76.479225
+  },
+  {
+  "LocId":"35",
+  "Name":"Goldie's",
+  "Latitude":42.450096,
+  "Longitude":-76.481422
+  },
+  {
+  "LocId":"36",
+  "Name":"Franny's",
+  "Latitude":42.451027,
+  "Longitude":-76.483890
+  },
+  {
+  "LocId":"37",
+  "Name":"Cornell Dairy Bar",
+  "Latitude":42.447314,
+  "Longitude":-76.470923
+  },
+  {
+  "LocId":"38",
+  "Name":"Bear's Den",
+  "Latitude":42.446754,
+  "Longitude":-76.485560
+  },
+  {
+  "LocId":"39",
+  "Name":"Carol's Cafe",
+  "Latitude":42.453300,
+  "Longitude":-76.479172
+  },
+  {
+  "LocId":"40",
+  "Name":"104 West! (Kosher Dining Hall)",
+  "Latitude":42.444313,
+  "Longitude":-76.487907
+  }
+]

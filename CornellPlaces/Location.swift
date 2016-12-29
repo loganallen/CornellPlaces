@@ -8,20 +8,16 @@
 
 import MapKit
 import SwiftyJSON
-import AddressBookUI
-import AddressBook
 
 class Location: NSObject, MKAnnotation {
-    private let name: String
-    private let categories: [String]
-    private let subCategory: String
-    internal let coordinate: CLLocationCoordinate2D
-    private let address: String
+    let uid: String
+    let name: String
+    let coordinate: CLLocationCoordinate2D
+    let address: String
     
-    init(_ name: String, categories: [String], subCategory: String, latitude: Double, longitude: Double) {
+    init(uid: String, name: String, latitude: Double, longitude: Double) {
+        self.uid = uid
         self.name = name
-        self.categories = categories
-        self.subCategory = subCategory
         self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         
         let loc = CLLocation(latitude: latitude, longitude: longitude)
@@ -37,28 +33,17 @@ class Location: NSObject, MKAnnotation {
         super.init()
     }
     
-    convenience init?(_ json: JSON) {
+    convenience init?(json: JSON) {
+        guard let uid = json["LocId"].string else { return nil }
         guard let name = json["Name"].string else { return nil }
-        guard let rawCategories = json["Category"].array else { return nil }
-        let categories: [String] = rawCategories.map { $0.string! }
-        var subCategory: String = ""
-        if let sub = json["SubCategory"].string { subCategory = sub }
+        guard let latitude = json["Latitude"].double else { return nil }
+        guard let longitude = json["Longitude"].double else { return nil }
         
-        let latitude = json["Latitude"].double
-        let longitude = json["Longitude"].double
-        guard latitude != nil && longitude != nil else { return nil }
-        
-        self.init(name, categories: categories, subCategory: subCategory, latitude: latitude!, longitude: longitude!)
+        self.init(uid: uid, name: name, latitude: latitude, longitude: longitude)
     }
     
     // Override location description
     override var description: String {
-        return "Category: \(categories) | SubCat: \(subCategory) | Name: \(name)"
+        return "LocId: \(uid) | Name: \(name)\n"
     }
-    
-    func getName() -> String { return name }
-    
-    func getCategories() -> [String] { return categories }
-    
-    func getCoordinates() -> CLLocationCoordinate2D { return coordinate }
 }

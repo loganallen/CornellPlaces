@@ -1,0 +1,14 @@
+[
+ {
+ "Name":"Fitness Centers",
+ "SubCategories":[]
+ },
+ {
+ "Name":"Law School",
+ "SubCategories":[]
+ },
+ {
+ "Name":"Eateries",
+ "SubCategories":["North Campus","West Campus", "Central Campus"]
+ }
+]

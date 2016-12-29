@@ -11,6 +11,9 @@ import UIKit
 extension UIColor {
     @nonobjc static let placesDarkRed = UIColor.colorFromCode(0x461D21)
     @nonobjc static let placesRed = UIColor.colorFromCode(0xA52A2A)
+    @nonobjc static let placesDarkGray = UIColor.colorFromCode(0x4A4A4A)
+    @nonobjc static let placesGray = UIColor.colorFromCode(0x9B9B9B)
+    @nonobjc static let placesLightGray = UIColor.colorFromCode(0xE9E9E9)
     
     public static func colorFromCode(_ code: Int) -> UIColor {
         let red = CGFloat(((code & 0xFF0000) >> 16)) / 255

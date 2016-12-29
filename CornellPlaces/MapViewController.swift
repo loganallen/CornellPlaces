@@ -12,16 +12,6 @@ import SwiftyJSON
 
 typealias locationKey = String
 
-protocol LocationDelegate {
-    func didTapLocation(_ id: String)
-    func didTapCategory(_ category: String)
-}
-
-struct Locations {
-    static var categorizedMapping = [String: [locationKey]]()
-    static var mapping = [locationKey: Location]()
-}
-
 class MapViewController: UIViewController {
     
     var placesVC: UIViewController!
@@ -36,21 +26,26 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        
-        initializeMapView()
-        
+        // Fetch data from server in background thread
         DispatchQueue.global(qos: .userInitiated).async {
-            self.getLocationObjects()
+            API.api.getLocationObjects()
+            API.api.getCategories()
+            API.api.getLocationCategoryMatchings()
+//            print(PlacesData.categories)
+//            print(PlacesData.locations)
             DispatchQueue.main.async {
                 print("Back to main thread")
                 self.placesVC = PlacesViewController()
             }
         }
         
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        
+        initializeMapView()
         initializeButtons()
+        
         tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MapViewController.handleTap(_:)))
         tapGestureRecognizer.delegate = self
         tapGestureRecognizer.cancelsTouchesInView = false
@@ -81,40 +76,6 @@ class MapViewController: UIViewController {
         view.addSubview(placesButton)
     }
     
-    // Get all location objects
-    func getLocationObjects() {
-        // TODO: Replace with API call on backend
-        
-        let jsonArray = JSON(data: NSData(contentsOf: Bundle.main.url(forResource: "data", withExtension: "json")!) as Data? ?? NSData() as Data)
-       
-        for i in 0..<jsonArray.count {
-            let json = jsonArray[i]
-            guard let id = json["UId"].string else {
-                print("No location ID found!!!")
-                exit(0)
-            }
-            let loc = Location(json)
-            saveLocation(id, loc!)
-        }
-    }
-    
-    // Add location object to the static variables
-    func saveLocation(_ id: locationKey, _ loc: Location){
-        for cat in loc.getCategories() {
-            if var map = Locations.categorizedMapping[cat] {
-                map.append(id)
-            } else {
-                Locations.categorizedMapping[cat] = [id]
-            }
-        }
-        if let _ = Locations.mapping[id] {
-            print("Non-unique ID!!!")
-            exit(0)
-        }
-        Locations.mapping[id] = loc
-//        print("Length: \(Locations.mapping.count)")
-    }
-    
     // Center map view to specified location
 //    func centerMap(_ location: CLLocationCoordinate2D) {
 //        let region = MKCoordinateRegionMakeWithDistance(location, regionRadius, regionRadius)
@@ -132,15 +93,6 @@ extension MapViewController: UIGestureRecognizerDelegate {
                 navigationController?.pushViewController(placesVC, animated: true)
             }
         }
-    }
-}
-
-extension MapViewController: LocationDelegate {
-    internal func didTapLocation(_ locationId: String) {
-        return
-    }
-    internal func didTapCategory(_ category: String) {
-        return
     }
 }
 
