@@ -201,7 +201,7 @@
 				TargetAttributes = {
 					02A7348B1E1356E4009560F5 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = R8MGTW9Q8N;
+						DevelopmentTeam = 9VSJZHVUGP;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -415,7 +415,7 @@
 			baseConfigurationReference = AFCECBCD2F26B4C2C89C7365 /* Pods-CornellPlaces.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = R8MGTW9Q8N;
+				DEVELOPMENT_TEAM = 9VSJZHVUGP;
 				INFOPLIST_FILE = CornellPlaces/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = loganallen.CornellPlaces;
@@ -429,7 +429,7 @@
 			baseConfigurationReference = 311FBF582BB2AB69EE0A6769 /* Pods-CornellPlaces.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = R8MGTW9Q8N;
+				DEVELOPMENT_TEAM = 9VSJZHVUGP;
 				INFOPLIST_FILE = CornellPlaces/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = loganallen.CornellPlaces;
