@@ -157,6 +157,7 @@ extension MapViewController: UIGestureRecognizerDelegate {
                 print("Settings hit")
             } else if userLocationButton.frame.contains(tapPoint) {
                 print("UserLocation hit")
+                locationManager.startUpdatingLocation()
             } else if placesButton.frame.contains(tapPoint) {
                 navigationController?.pushViewController(placesVC, animated: true)
             } else {
@@ -184,6 +185,14 @@ extension MapViewController: CLLocationManagerDelegate {
         } else {
             locationManager.requestWhenInUseAuthorization()
         }
+    }
+    
+    // Update map to users location
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let loc = locations.last! as CLLocation
+        let camera = MKMapCamera(lookingAtCenter: loc.coordinate, fromDistance: regionRadius, pitch: 0.0, heading: 0.0)
+        mapView.setCamera(camera, animated: true)
+        locationManager.stopUpdatingLocation()
     }
 }
 
