@@ -12,10 +12,20 @@ import SwiftyJSON
 
 class Category: NSObject {
     var name: String!
-    var subCategories: [String: [locationKey]]!
-    lazy var allItems: [String] = self.getAllItems()
     var numberOfLocations: Int!
     var isExpanded: Bool!
+    var subCategories: [String: [locationKey]]!
+    
+    lazy var allItems: [String] = {
+        var items = [String]()
+        self.subCategories.forEach({ (sub,locs) in
+            items.append(sub)
+            locs.forEach({ (locKey) in
+                items.append(locKey)
+            })
+        })
+        return items
+    }()
     
     init(name: String, subCategories: [String]) {
         self.name = name
@@ -48,18 +58,6 @@ class Category: NSObject {
     func addLocations(toSubCategory c: String, locationKeys: [locationKey]) {
         subCategories[c] = locationKeys
         numberOfLocations = numberOfLocations + locationKeys.count
-    }
-    
-    // Lazy initialization of allItems
-    func getAllItems() -> [String] {
-        var items = [String]()
-        subCategories.forEach({ (sub,locs) in
-            items.append(sub)
-            locs.forEach({ (locKey) in
-                items.append(locKey)
-            })
-        })
-        return items
     }
     
     override var description: String {

@@ -10,8 +10,6 @@ import UIKit
 import MapKit
 import SwiftyJSON
 
-typealias locationKey = String
-
 enum KeyboardState {
     case hidden
     case showing

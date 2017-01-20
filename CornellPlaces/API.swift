@@ -9,6 +9,8 @@
 import UIKit
 import SwiftyJSON
 
+typealias locationKey = String
+
 struct PlacesData {
     static var categories = [String: Category]()
     static var categoryList = [String]()

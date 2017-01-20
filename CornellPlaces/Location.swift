@@ -13,22 +13,23 @@ class Location: NSObject, MKAnnotation {
     let uid: String
     let name: String
     let coordinate: CLLocationCoordinate2D
-    let address: String
     
-    init(uid: String, name: String, latitude: Double, longitude: Double) {
-        self.uid = uid
-        self.name = name
-        self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        
-        let loc = CLLocation(latitude: latitude, longitude: longitude)
+    lazy var address: String = {
         var addr = "Address not found"
+        let loc = CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
         CLGeocoder().reverseGeocodeLocation(loc) { (result: [CLPlacemark]?, err: Error?) in
             if let address = result?.first {
                 let lines = address.addressDictionary?["FormattedAddressLines"] as! [String]
                 addr = lines.joined(separator: "\n")
             }
         }
-        self.address = addr
+        return addr
+    }()
+    
+    init(uid: String, name: String, latitude: Double, longitude: Double) {
+        self.uid = uid
+        self.name = name
+        self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         
         super.init()
     }
@@ -44,6 +45,6 @@ class Location: NSObject, MKAnnotation {
     
     // Override location description
     override var description: String {
-        return "LocId: \(uid) | Name: \(name)\n"
+        return "LocId: \(uid) | Name: \(name) | Address: \(address)\n"
     }
 }
