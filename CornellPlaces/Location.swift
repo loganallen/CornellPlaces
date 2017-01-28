@@ -10,8 +10,9 @@ import MapKit
 import SwiftyJSON
 
 class Location: NSObject, MKAnnotation {
+    
     let uid: String
-    let name: String
+    let title: String?
     let coordinate: CLLocationCoordinate2D
     
     lazy var address: String = {
@@ -28,7 +29,7 @@ class Location: NSObject, MKAnnotation {
     
     init(uid: String, name: String, latitude: Double, longitude: Double) {
         self.uid = uid
-        self.name = name
+        self.title = name
         self.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         
         super.init()
@@ -45,6 +46,6 @@ class Location: NSObject, MKAnnotation {
     
     // Override location description
     override var description: String {
-        return "LocId: \(uid) | Name: \(name) | Address: \(address)\n"
+        return "LocId: \(uid) | Name: \(title) | Address: \(address)\n"
     }
 }

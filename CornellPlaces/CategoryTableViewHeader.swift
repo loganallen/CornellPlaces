@@ -39,7 +39,7 @@ class CategoryTableViewHeader: UITableViewHeaderFooterView {
         contentView.addSubview(arrowImage)
         
         categoryLabel = UILabel(frame: CGRect(x: categoryImage.frame.maxX + 12, y: 16, width: arrowImage.frame.minX - (categoryImage.frame.maxX + 24), height: 30))
-        categoryLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 19)
+        categoryLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 18)
         categoryLabel.textColor = UIColor.placesRed
         contentView.addSubview(categoryLabel)
         

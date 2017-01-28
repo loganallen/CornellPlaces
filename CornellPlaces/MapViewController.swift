@@ -15,13 +15,18 @@ enum KeyboardState {
     case showing
 }
 
-class MapViewController: UIViewController {
+protocol PlacesDelegate {
+    func didTapLocationCell(_ locationIds: [locationKey])
+}
+
+class MapViewController: UIViewController, UIGestureRecognizerDelegate, PlacesDelegate {
     
-    var placesVC: UIViewController!
+    var placesVC: PlacesViewController!
     
     var locationManager: CLLocationManager!
     var mapView: MKMapView!
-    let regionRadius: CLLocationDistance = 3600
+    let initLoc = CLLocationCoordinate2D(latitude: 42.451284, longitude: -76.484155)
+    let initRadius: CLLocationDistance = 2000
     
     var searchBar: UITextField!
     var keyboardState: KeyboardState!
@@ -31,6 +36,7 @@ class MapViewController: UIViewController {
     var userLocationButton: UIView!
     
     var tapGestureRecognizer: UITapGestureRecognizer!
+    let mapIdentifier = "locationPin"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +46,11 @@ class MapViewController: UIViewController {
             API.api.getLocationObjects()
             API.api.getCategories()
             API.api.getLocationCategoryMatchings()
-//            print(PlacesData.categories)
-//            print(PlacesData.locations)
             DispatchQueue.main.async {
                 print("Back to main thread")
                 self.placesVC = PlacesViewController()
+                self.placesVC.placesDelegate = self
+                self.placesVC.mapVC = self
             }
         }
         
@@ -56,7 +62,7 @@ class MapViewController: UIViewController {
         initializeSearchBar()
         initializeButtons()
         
-        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MapViewController.handleTap(_:)))
+        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MapViewController.handleButtonTap(_:)))
         tapGestureRecognizer.delegate = self
         tapGestureRecognizer.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGestureRecognizer)
@@ -69,16 +75,16 @@ class MapViewController: UIViewController {
         mapView.mapType = .standard
         mapView.showsCompass = false
         
-        let initLoc = CLLocationCoordinate2D(latitude: 42.451284, longitude: -76.484155)
-        let camera = MKMapCamera(lookingAtCenter: initLoc, fromDistance: regionRadius, pitch: 0.0, heading: 0.0)
-        mapView.setCamera(camera, animated: false)
+//        let camera = MKMapCamera(lookingAtCenter: initLoc, fromDistance: regionRadius, pitch: 0.0, heading: 0.0)
+//        mapView.setCamera(camera, animated: false)
+        centerMap(initLoc, animated: false)
         view = mapView
     }
     
     // Initialize search bar
     func initializeSearchBar() {
         searchBar = UITextField(frame: CGRect(x: 10, y: 30, width: UIScreen.main.bounds.width - 20, height: 36))
-        searchBar.backgroundColor = UIColor.white
+        searchBar.backgroundColor = .white
         searchBar.layer.shadowColor = UIColor.black.cgColor
         searchBar.layer.shadowOpacity = 0.5
         searchBar.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -86,7 +92,7 @@ class MapViewController: UIViewController {
         searchBar.layer.masksToBounds = false
         searchBar.attributedPlaceholder = NSAttributedString(string: "Find places at Cornell", attributes: [NSForegroundColorAttributeName: UIColor.placesGray])
         searchBar.font = UIFont(name: "AvenirNext-Medium", size: 14)
-        searchBar.textColor = UIColor.placesDarkGray
+        searchBar.textColor = .placesDarkGray
         searchBar.textAlignment = .left
         searchBar.clearsOnBeginEditing = false
         searchBar.clearButtonMode = .whileEditing
@@ -110,7 +116,7 @@ class MapViewController: UIViewController {
         
         // Settings button
         settingsButton = UIView(frame: CGRect(x: 20, y: topY, width: 56, height: 56))
-        settingsButton.backgroundColor = UIColor.white
+        settingsButton.backgroundColor = .white
         settingsButton.layer.shadowColor = UIColor.black.cgColor
         settingsButton.layer.shadowOpacity = 0.5
         settingsButton.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -120,7 +126,7 @@ class MapViewController: UIViewController {
         
         // UserLocation button
         userLocationButton = UIView(frame: CGRect(x: UIScreen.main.bounds.width - (56 + 20), y: topY, width: 56, height: 56))
-        userLocationButton.backgroundColor = UIColor.white
+        userLocationButton.backgroundColor = .white
         userLocationButton.layer.shadowColor = UIColor.black.cgColor
         userLocationButton.layer.shadowOpacity = 0.5
         userLocationButton.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -130,7 +136,7 @@ class MapViewController: UIViewController {
         
         // Places button
         placesButton = UIView(frame: CGRect(x: userLocationButton.frame.minX - (56 + 20), y: topY, width: 56, height: 56))
-        placesButton.backgroundColor = UIColor.white
+        placesButton.backgroundColor = .white
         placesButton.layer.shadowColor = UIColor.black.cgColor
         placesButton.layer.shadowOpacity = 0.5
         placesButton.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -139,16 +145,32 @@ class MapViewController: UIViewController {
         view.addSubview(placesButton)
     }
     
+    // PlacesDelegate method
+    func didTapLocationCell(_ locationIds: [locationKey]) {
+        mapView.removeAnnotations(mapView.annotations)
+        var locations = [Location]()
+        for locId in locationIds {
+            if let loc = PlacesData.locations[locId] {
+                locations.append(loc)
+            }
+        }
+        print(locations)
+        mapView.addAnnotations(locations)
+        if (locations.count == 1) {
+            mapView.selectAnnotation(locations.first!, animated: true)
+        }
+        let loc = locations.count > 1 ? initLoc : locations.first!.coordinate
+        centerMap(loc)
+    }
+    
     // Center map view to specified location
-//    func centerMap(_ location: CLLocationCoordinate2D) {
-//        let region = MKCoordinateRegionMakeWithDistance(location, regionRadius, regionRadius)
-//        mapView.setRegion(region, animated: true)
-//    }
+    func centerMap(_ location: CLLocationCoordinate2D, animated: Bool = true) {
+        let region = MKCoordinateRegionMakeWithDistance(location, initRadius, initRadius)
+        mapView.setRegion(region, animated: animated)
+    }
 
-}
-
-extension MapViewController: UIGestureRecognizerDelegate {
-    func handleTap(_ sender: UITapGestureRecognizer) {
+    // Handle interface button tap
+    func handleButtonTap(_ sender: UITapGestureRecognizer) {
         let tapPoint = sender.location(in: view)
         if sender.state == .ended {
             if settingsButton.frame.contains(tapPoint) {
@@ -170,7 +192,29 @@ extension MapViewController: UIGestureRecognizerDelegate {
 
 // MARK - Map View delegate methods
 extension MapViewController: MKMapViewDelegate {
-    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let annotation = annotation as? Location {
+            var annotationView: MKAnnotationView
+            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: mapIdentifier) {
+                dequeuedView.annotation = annotation
+                annotationView = dequeuedView
+            } else {
+                annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: mapIdentifier)
+                annotationView.image = #imageLiteral(resourceName: "marker_red")
+                annotationView.centerOffset = CGPoint(x: 0, y: -annotationView.image!.size.height/2)
+                annotationView.canShowCallout = true
+//                let detailView = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: 40))
+//                detailView.backgroundColor = .white
+//                detailView.layer.shadowColor = UIColor.black.cgColor
+//                detailView.layer.shadowOpacity = 0.6
+//                detailView.layer.shadowOffset = CGSize(width: 0, height: 2)
+//                detailView.layer.shadowRadius = 4
+//                annotationView.detailCalloutAccessoryView = detailView
+            }
+            return annotationView
+        }
+        return nil
+    }
 }
 
 
@@ -188,8 +232,9 @@ extension MapViewController: CLLocationManagerDelegate {
     // Update map to users location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let loc = locations.last! as CLLocation
-        let camera = MKMapCamera(lookingAtCenter: loc.coordinate, fromDistance: regionRadius, pitch: 0.0, heading: 0.0)
-        mapView.setCamera(camera, animated: true)
+//        let camera = MKMapCamera(lookingAtCenter: loc.coordinate, fromDistance: regionRadius, pitch: 0.0, heading: 0.0)
+//        mapView.setCamera(camera, animated: true)
+        centerMap(loc.coordinate)
         locationManager.stopUpdatingLocation()
     }
 }

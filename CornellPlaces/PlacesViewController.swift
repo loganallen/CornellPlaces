@@ -23,6 +23,9 @@ class PlacesViewController: UIViewController {
     let headerId: String = "categoryCell"
     let cellId: String = "locationCell"
     
+    var placesDelegate: PlacesDelegate!
+    var mapVC: MapViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -131,7 +134,7 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource, Cate
         let parentCategory = PlacesData.categories[PlacesData.categoryList[indexPath.section]]!
         let item = parentCategory.allItems[indexPath.row]
         if let loc = PlacesData.locations[item] {
-            cell.nameLabel.text = loc.name
+            cell.nameLabel.text = loc.title
             cell.nameLabel.font = UIFont(name: "AvenirNext-Regular", size: 15)
             cell.markerImage.image = UIImage(named: "singlePlace")
             cell.locationIds = [item]
@@ -155,7 +158,8 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource, Cate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! CategoryTableViewCell
-        print("\(cell.nameLabel.text) was selected")
+        navigationController?.popViewController(animated: true)
+        placesDelegate.didTapLocationCell(cell.locationIds)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
