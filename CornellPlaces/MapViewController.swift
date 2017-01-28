@@ -26,7 +26,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, PlacesDe
     var locationManager: CLLocationManager!
     var mapView: MKMapView!
     let initLoc = CLLocationCoordinate2D(latitude: 42.451284, longitude: -76.484155)
-    let initRadius: CLLocationDistance = 2000
+    let initRadius: CLLocationDistance = 1800
     
     var searchBar: UITextField!
     var keyboardState: KeyboardState!
@@ -34,6 +34,8 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, PlacesDe
     var settingsButton: UIView!
     var placesButton: UIView!
     var userLocationButton: UIView!
+    let buttonSize: CGFloat = 58
+    let buttonFont = UIFont(name: "AvenirNext-Medium", size: 11)
     
     var tapGestureRecognizer: UITapGestureRecognizer!
     let mapIdentifier = "locationPin"
@@ -83,7 +85,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, PlacesDe
     
     // Initialize search bar
     func initializeSearchBar() {
-        searchBar = UITextField(frame: CGRect(x: 10, y: 30, width: UIScreen.main.bounds.width - 20, height: 36))
+        searchBar = UITextField(frame: CGRect(x: 10, y: 30, width: UIScreen.main.bounds.width - 20, height: 38))
         searchBar.backgroundColor = .white
         searchBar.layer.shadowColor = UIColor.black.cgColor
         searchBar.layer.shadowOpacity = 0.5
@@ -100,8 +102,8 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, PlacesDe
         searchBar.autocapitalizationType = .words
         searchBar.autocorrectionType = .no
         searchBar.keyboardAppearance = .dark
-        let searchImageView = UIView(frame: CGRect(x: 0, y: 0, width: 32, height: searchBar.frame.height))
-        let searchIcon = UIImageView(frame: CGRect(x: 7, y: 9, width: 18, height: 18))
+        let searchImageView = UIView(frame: CGRect(x: 0, y: 0, width: 34, height: searchBar.frame.height))
+        let searchIcon = UIImageView(frame: CGRect(x: 8, y: 10, width: 18, height: 18))
         searchIcon.image = #imageLiteral(resourceName: "searchGray")
         searchImageView.addSubview(searchIcon)
         searchBar.leftView = searchImageView
@@ -115,33 +117,54 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, PlacesDe
         let topY = UIScreen.main.bounds.height - 76
         
         // Settings button
-        settingsButton = UIView(frame: CGRect(x: 20, y: topY, width: 56, height: 56))
+        settingsButton = UIView(frame: CGRect(x: 20, y: topY, width: buttonSize, height: buttonSize))
         settingsButton.backgroundColor = .white
         settingsButton.layer.shadowColor = UIColor.black.cgColor
         settingsButton.layer.shadowOpacity = 0.5
         settingsButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         settingsButton.layer.shadowRadius = 5
         settingsButton.layer.cornerRadius = 4
+        let settingsLabel = UILabel(frame: CGRect(x: 0, y: 36, width: buttonSize, height: 20))
+        settingsLabel.backgroundColor = .clear
+        settingsLabel.font = buttonFont
+        settingsLabel.textColor = .placesRed
+        settingsLabel.textAlignment = .center
+        settingsLabel.text = "Settings"
+        settingsButton.addSubview(settingsLabel)
         view.addSubview(settingsButton)
         
         // UserLocation button
-        userLocationButton = UIView(frame: CGRect(x: UIScreen.main.bounds.width - (56 + 20), y: topY, width: 56, height: 56))
+        userLocationButton = UIView(frame: CGRect(x: UIScreen.main.bounds.width - (buttonSize + 20), y: topY, width: buttonSize, height: buttonSize))
         userLocationButton.backgroundColor = .white
         userLocationButton.layer.shadowColor = UIColor.black.cgColor
         userLocationButton.layer.shadowOpacity = 0.5
         userLocationButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         userLocationButton.layer.shadowRadius = 5
         userLocationButton.layer.cornerRadius = 4
+        let userLabel = UILabel(frame: CGRect(x: 0, y: 36, width: buttonSize, height: 20))
+        userLabel.backgroundColor = .clear
+        userLabel.font = buttonFont
+        userLabel.textColor = .placesRed
+        userLabel.textAlignment = .center
+        userLabel.text = "Me"
+        userLocationButton.addSubview(userLabel)
         view.addSubview(userLocationButton)
         
         // Places button
-        placesButton = UIView(frame: CGRect(x: userLocationButton.frame.minX - (56 + 20), y: topY, width: 56, height: 56))
+        placesButton = UIView(frame: CGRect(x: userLocationButton.frame.minX - (buttonSize + 20), y: topY, width: buttonSize, height: buttonSize))
         placesButton.backgroundColor = .white
         placesButton.layer.shadowColor = UIColor.black.cgColor
         placesButton.layer.shadowOpacity = 0.5
         placesButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         placesButton.layer.shadowRadius = 5
         placesButton.layer.cornerRadius = 4
+        let placesLabel = UILabel(frame: CGRect(x: 0, y: 36, width: buttonSize, height: 20))
+        placesLabel.backgroundColor = .clear
+        placesLabel.font = buttonFont
+        placesLabel.textColor = .placesRed
+        placesLabel.textAlignment = .center
+        placesLabel.text = "Places"
+        placesButton.addSubview(placesLabel)
         view.addSubview(placesButton)
     }
     
