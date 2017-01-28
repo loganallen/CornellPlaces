@@ -34,8 +34,9 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, PlacesDe
     var settingsButton: UIView!
     var placesButton: UIView!
     var userLocationButton: UIView!
-    let buttonSize: CGFloat = 58
-    let buttonFont = UIFont(name: "AvenirNext-Medium", size: 11)
+    final let buttonSize: CGFloat = 58
+    final let buttonImageSize: CGFloat = 24
+    let buttonFont = UIFont(name: "AvenirNext-DemiBold", size: 11)
     
     var tapGestureRecognizer: UITapGestureRecognizer!
     let mapIdentifier = "locationPin"
@@ -114,16 +115,19 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, PlacesDe
     }
     
     func initializeButtons() {
-        let topY = UIScreen.main.bounds.height - 76
+        let topY = UIScreen.main.bounds.height - 72
         
         // Settings button
-        settingsButton = UIView(frame: CGRect(x: 20, y: topY, width: buttonSize, height: buttonSize))
+        settingsButton = UIView(frame: CGRect(x: 14, y: topY, width: buttonSize, height: buttonSize))
         settingsButton.backgroundColor = .white
         settingsButton.layer.shadowColor = UIColor.black.cgColor
         settingsButton.layer.shadowOpacity = 0.5
         settingsButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         settingsButton.layer.shadowRadius = 5
         settingsButton.layer.cornerRadius = 4
+        let settingsImage = UIImageView(frame: CGRect(x: (buttonSize-buttonImageSize)/2, y: (buttonSize-36)/2, width: buttonImageSize, height: buttonImageSize))
+        settingsImage.image = #imageLiteral(resourceName: "settingsIcon")
+        settingsButton.addSubview(settingsImage)
         let settingsLabel = UILabel(frame: CGRect(x: 0, y: 36, width: buttonSize, height: 20))
         settingsLabel.backgroundColor = .clear
         settingsLabel.font = buttonFont
@@ -134,13 +138,16 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, PlacesDe
         view.addSubview(settingsButton)
         
         // UserLocation button
-        userLocationButton = UIView(frame: CGRect(x: UIScreen.main.bounds.width - (buttonSize + 20), y: topY, width: buttonSize, height: buttonSize))
+        userLocationButton = UIView(frame: CGRect(x: UIScreen.main.bounds.width - (buttonSize + 14), y: topY, width: buttonSize, height: buttonSize))
         userLocationButton.backgroundColor = .white
         userLocationButton.layer.shadowColor = UIColor.black.cgColor
         userLocationButton.layer.shadowOpacity = 0.5
         userLocationButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         userLocationButton.layer.shadowRadius = 5
         userLocationButton.layer.cornerRadius = 4
+        let userImage = UIImageView(frame: CGRect(x: (buttonSize-buttonImageSize)/2, y: (buttonSize-36)/2, width: buttonImageSize, height: buttonImageSize))
+        userImage.image = #imageLiteral(resourceName: "userIcon")
+        userLocationButton.addSubview(userImage)
         let userLabel = UILabel(frame: CGRect(x: 0, y: 36, width: buttonSize, height: 20))
         userLabel.backgroundColor = .clear
         userLabel.font = buttonFont
@@ -151,13 +158,16 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, PlacesDe
         view.addSubview(userLocationButton)
         
         // Places button
-        placesButton = UIView(frame: CGRect(x: userLocationButton.frame.minX - (buttonSize + 20), y: topY, width: buttonSize, height: buttonSize))
+        placesButton = UIView(frame: CGRect(x: userLocationButton.frame.minX - (buttonSize + 14), y: topY, width: buttonSize, height: buttonSize))
         placesButton.backgroundColor = .white
         placesButton.layer.shadowColor = UIColor.black.cgColor
         placesButton.layer.shadowOpacity = 0.5
         placesButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         placesButton.layer.shadowRadius = 5
         placesButton.layer.cornerRadius = 4
+        let placesImage = UIImageView(frame: CGRect(x: (buttonSize-buttonImageSize)/2, y: (buttonSize-36)/2, width: buttonImageSize, height: buttonImageSize))
+        placesImage.image = #imageLiteral(resourceName: "placesIcon")
+        placesButton.addSubview(placesImage)
         let placesLabel = UILabel(frame: CGRect(x: 0, y: 36, width: buttonSize, height: 20))
         placesLabel.backgroundColor = .clear
         placesLabel.font = buttonFont

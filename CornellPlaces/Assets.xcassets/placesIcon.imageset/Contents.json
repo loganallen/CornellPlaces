@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "law3x.png",
+      "filename" : "placesIcon.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "placesIcon2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "placesIcon3x.png",
       "scale" : "3x"
     }
   ],
