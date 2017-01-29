@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02266BFD1E3D6FB200B9F0F5 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02266BFC1E3D6FB200B9F0F5 /* SearchTableViewCell.swift */; };
 		02A734901E1356E4009560F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A7348F1E1356E4009560F5 /* AppDelegate.swift */; };
 		02A734921E1356E4009560F5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A734911E1356E4009560F5 /* MapViewController.swift */; };
 		02A734971E1356E4009560F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A734961E1356E4009560F5 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02266BFC1E3D6FB200B9F0F5 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		02A7348C1E1356E4009560F5 /* CornellPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CornellPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02A7348F1E1356E4009560F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02A734911E1356E4009560F5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			children = (
 				02A734AB1E1451FB009560F5 /* CategoryTableViewHeader.swift */,
 				02A734C01E14D6B5009560F5 /* CategoryTableViewCell.swift */,
+				02266BFC1E3D6FB200B9F0F5 /* SearchTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				02A734A21E1367C8009560F5 /* Location.swift in Sources */,
 				02A734AA1E13A0EB009560F5 /* UIColor+Shared.swift in Sources */,
 				02A734A81E139D6A009560F5 /* PlacesViewController.swift in Sources */,
+				02266BFD1E3D6FB200B9F0F5 /* SearchTableViewCell.swift in Sources */,
 				02A734A61E138FAB009560F5 /* API.swift in Sources */,
 				02A734AD1E1451FB009560F5 /* CategoryTableViewHeader.swift in Sources */,
 				02A734901E1356E4009560F5 /* AppDelegate.swift in Sources */,

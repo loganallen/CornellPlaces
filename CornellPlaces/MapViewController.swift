@@ -30,6 +30,9 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, PlacesDe
     
     var searchBar: UITextField!
     var keyboardState: KeyboardState!
+    var searchTableView: UITableView!
+    let cellId = "searchCellId"
+    var filteredLocations: [Location] = [Location]()
     
     var settingsButton: UIView!
     var placesButton: UIView!
@@ -40,6 +43,8 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, PlacesDe
     
     var tapGestureRecognizer: UITapGestureRecognizer!
     let mapIdentifier = "locationPin"
+    
+    var screenHeight: CGFloat!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +62,8 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, PlacesDe
             }
         }
         
+        screenHeight = UIScreen.main.bounds.maxY
+        
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -64,6 +71,10 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, PlacesDe
         initializeMapView()
         initializeSearchBar()
         initializeButtons()
+        initializeSearchTableView()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(MapViewController.keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MapViewController.keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
         
         tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MapViewController.handleButtonTap(_:)))
         tapGestureRecognizer.delegate = self
@@ -77,9 +88,6 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, PlacesDe
         mapView.delegate = self
         mapView.mapType = .standard
         mapView.showsCompass = false
-        
-//        let camera = MKMapCamera(lookingAtCenter: initLoc, fromDistance: regionRadius, pitch: 0.0, heading: 0.0)
-//        mapView.setCamera(camera, animated: false)
         centerMap(initLoc, animated: false)
         view = mapView
     }
@@ -112,6 +120,20 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, PlacesDe
         view.addSubview(searchBar)
         
         keyboardState = .hidden
+    }
+    
+    func initializeSearchTableView() {
+        searchTableView = UITableView(frame: CGRect(x: 10, y: searchBar.frame.maxY, width: searchBar.frame.width, height: screenHeight-searchBar.frame.maxY))
+        searchTableView.delegate = self
+        searchTableView.dataSource = self
+        print("suh")
+        searchTableView.register(SearchTableViewCell.self, forCellReuseIdentifier: cellId)
+        searchTableView.showsVerticalScrollIndicator = true
+        searchTableView.estimatedRowHeight = 50
+        searchTableView.backgroundColor = .white
+        searchTableView.separatorStyle = .none
+        view.insertSubview(searchTableView, aboveSubview: searchBar)
+        print("done")
     }
     
     func initializeButtons() {
@@ -196,6 +218,25 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, PlacesDe
         centerMap(loc)
     }
     
+    func keyboardWillShow(_ notification: NSNotification) {
+        if let keyboardHeight = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.minY {
+            adjustSearchTableViewFrame(keyboardHeight-searchBar.frame.maxY)
+        }
+    }
+    
+    func keyboardWillHide(_ notification: NSNotification) {
+        if let keyboardHeight = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.minY {
+            adjustSearchTableViewFrame(keyboardHeight-searchBar.frame.maxY)
+        }
+    }
+    
+    // Update the search table view frame
+    func adjustSearchTableViewFrame(_ bottomValue: CGFloat) {
+        UIView.animate(withDuration: 0.4) { 
+            self.searchTableView.frame = CGRect(x: 10, y: self.searchBar.frame.maxY, width: self.searchBar.frame.width, height: bottomValue)
+        }
+    }
+    
     // Center map view to specified location
     func centerMap(_ location: CLLocationCoordinate2D, animated: Bool = true) {
         let region = MKCoordinateRegionMakeWithDistance(location, initRadius, initRadius)
@@ -221,6 +262,21 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, PlacesDe
             }
         }
     }
+}
+
+// MARK - Search TableView delegate methods
+extension MapViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filteredLocations.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! SearchTableViewCell
+        return cell
+    }
+
+    
 }
 
 // MARK - Map View delegate methods
@@ -255,18 +311,12 @@ extension MapViewController: MKMapViewDelegate {
 extension MapViewController: CLLocationManagerDelegate {
     // Check for location authorization
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            mapView.showsUserLocation = true
-        } else {
-            locationManager.requestWhenInUseAuthorization()
-        }
+        status == .authorizedWhenInUse ? mapView.showsUserLocation = true : locationManager.requestWhenInUseAuthorization()
     }
     
     // Update map to users location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let loc = locations.last! as CLLocation
-//        let camera = MKMapCamera(lookingAtCenter: loc.coordinate, fromDistance: regionRadius, pitch: 0.0, heading: 0.0)
-//        mapView.setCamera(camera, animated: true)
         centerMap(loc.coordinate)
         locationManager.stopUpdatingLocation()
     }
@@ -276,28 +326,14 @@ extension MapViewController: CLLocationManagerDelegate {
 //MARK - TextField delegate methods
 extension MapViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        checkSearchResults { (loc) in
-//            if loc.getName() != "" {
-//                if self.selectMarkerIfOnMap(loc) == false {
-//                    self.placeMarkers("none", locations: [loc])
-//                }
-//                self.view.endEditing(true)
-//                self.keyboardState = .hidden
-//            }
-//        }
+
         view.endEditing(true)
         keyboardState = .hidden
         return true
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        //        let oldSearch = searchBar.text
-        //        for loc in currentMarkers{
-        //            if loc.getName() == oldSearch {
-        //                mapView.selectedMarker = nil
-        //                loc.removePlaceMarker()
-        //            }
-        //        }
+        
         return true
     }
     
@@ -306,14 +342,14 @@ extension MapViewController: UITextFieldDelegate {
         return true
     }
     
-//    func checkSearchResults(completion: (Location) -> Void) {
-//        let search = searchBar.text?.lowercased()
-//        for loc in Locations.allLocations{
-//            if search == loc.getName().lowercaseString {
-//                completion(loc)
-//            }
-//        }
-//        completion(Location(category: [""], subCategory: "", name: "", latitude: 0, longitude: 0))
-//    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if let search = textField.text {
+            
+        }
+    }
+    
+    
+    
+    
 }
 
