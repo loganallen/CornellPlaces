@@ -11,8 +11,8 @@ import UIKit
 extension UIView {
     func rotate180Degrees(clockwise: Bool, duration: CFTimeInterval) {
         let rotation = CABasicAnimation(keyPath: "transform.rotation")
-        rotation.fromValue = clockwise ? -M_PI : 0
-        rotation.toValue = clockwise ? 0 : -M_PI
+        rotation.fromValue = clockwise ? -Double.pi : 0
+        rotation.toValue = clockwise ? 0 : -Double.pi
         rotation.isAdditive = true
         rotation.duration = duration
         rotation.isRemovedOnCompletion = false

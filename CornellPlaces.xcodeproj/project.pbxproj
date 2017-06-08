@@ -23,6 +23,7 @@
 		02A734BF1E14BB14009560F5 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 02A734BE1E14BB14009560F5 /* data.json */; };
 		02A734C21E14D6B5009560F5 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A734C01E14D6B5009560F5 /* CategoryTableViewCell.swift */; };
 		02A734C51E1523F7009560F5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A734C41E1523F7009560F5 /* UIView+Extension.swift */; };
+		02DA9EC71EE8CAD600004F3A /* PlacesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DA9EC61EE8CAD600004F3A /* PlacesHeaderView.swift */; };
 		F015C68D79CC32E62AADFB78 /* Pods_CornellPlaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F016FDAC0DC899D79DC7CD7 /* Pods_CornellPlaces.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		02A734BE1E14BB14009560F5 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		02A734C01E14D6B5009560F5 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		02A734C41E1523F7009560F5 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		02DA9EC61EE8CAD600004F3A /* PlacesHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesHeaderView.swift; sourceTree = "<group>"; };
 		311FBF582BB2AB69EE0A6769 /* Pods-CornellPlaces.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CornellPlaces.release.xcconfig"; path = "Pods/Target Support Files/Pods-CornellPlaces/Pods-CornellPlaces.release.xcconfig"; sourceTree = "<group>"; };
 		6F016FDAC0DC899D79DC7CD7 /* Pods_CornellPlaces.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CornellPlaces.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFCECBCD2F26B4C2C89C7365 /* Pods-CornellPlaces.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CornellPlaces.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CornellPlaces/Pods-CornellPlaces.debug.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 		02A734B71E14A12B009560F5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				02DA9EC61EE8CAD600004F3A /* PlacesHeaderView.swift */,
 				02A734B31E14A0FC009560F5 /* Cells */,
 			);
 			name = Views;
@@ -304,6 +307,7 @@
 				02A734AD1E1451FB009560F5 /* CategoryTableViewHeader.swift in Sources */,
 				02A734901E1356E4009560F5 /* AppDelegate.swift in Sources */,
 				02A734BB1E14A6D9009560F5 /* Category.swift in Sources */,
+				02DA9EC71EE8CAD600004F3A /* PlacesHeaderView.swift in Sources */,
 				02A734C51E1523F7009560F5 /* UIView+Extension.swift in Sources */,
 				02A734C21E14D6B5009560F5 /* CategoryTableViewCell.swift in Sources */,
 			);

@@ -8,15 +8,10 @@
 
 import UIKit
 
-class PlacesViewController: UIViewController {
-    
-    let headerHeight: CGFloat = 90
-    var headerView: UIView!
+class PlacesViewController: UIViewController, PlacesHeaderDelegate {
+    var headerView: PlacesHeaderView!
     var screenWidth: CGFloat!
     var screenHeight: CGFloat!
-    
-    var closeButton: UIButton!
-    var swipeGestureRecognizer: UISwipeGestureRecognizer!
     
     var tableView: UITableView!
     var currentlyExpandedSection: (section: Int, obj: Category)?
@@ -32,44 +27,14 @@ class PlacesViewController: UIViewController {
         screenWidth = UIScreen.main.bounds.width
         screenHeight = UIScreen.main.bounds.height
         
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = .white
         
-        initializeHeaderView()
-        
-        swipeGestureRecognizer = UISwipeGestureRecognizer()
-        swipeGestureRecognizer.direction = .right
-        swipeGestureRecognizer.delegate = self
-        swipeGestureRecognizer.addTarget(self, action: #selector(PlacesViewController.didSwipeView(_:)))
-        view.addGestureRecognizer(swipeGestureRecognizer)
-        
-        initializeTableView()
-    }
-    
-    func initializeHeaderView() {
-        headerView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: headerHeight))
-        
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.placesDarkRed.cgColor, UIColor.placesRed.cgColor]
-        gradient.startPoint = CGPoint(x: 0.05, y: 0.5)
-        gradient.endPoint = CGPoint(x: 0.95, y: 0.5)
-        gradient.frame = headerView.frame
-        headerView.layer.insertSublayer(gradient, at: 0)
-        
-        closeButton = UIButton(frame: CGRect(x: screenWidth - 44, y: 26, width: 30, height: 30))
-        closeButton.setBackgroundImage(UIImage(named: "close"), for: .normal)
-        closeButton.layer.shadowColor = UIColor.black.cgColor
-        closeButton.layer.shadowOffset = CGSize(width: 0, height: 1)
-        closeButton.layer.shadowRadius = 2
-        closeButton.layer.shadowOpacity = 0.6
-        closeButton.addTarget(self, action: #selector(PlacesViewController.closeButtonPressed(_:)), for: .touchUpInside)
-        
-        headerView.addSubview(closeButton)
+        headerView = PlacesHeaderView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: PlacesHeaderView.maxHeaderHeight))
+        headerView.setup()
+        headerView.delegate = self
         view.addSubview(headerView)
-    }
-    
-    // Initialize table view
-    func initializeTableView() {
-        tableView = UITableView(frame: CGRect(x: 0, y: headerHeight-20, width: screenWidth, height: screenHeight - headerHeight + 20))
+        
+        tableView = UITableView(frame: CGRect(x: 0, y: PlacesHeaderView.maxHeaderHeight-20, width: screenWidth, height: screenHeight - PlacesHeaderView.maxHeaderHeight + 20))
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(CategoryTableViewHeader.self, forHeaderFooterViewReuseIdentifier: headerId)
@@ -81,25 +46,15 @@ class PlacesViewController: UIViewController {
         view.insertSubview(tableView, belowSubview: headerView)
     }
     
-    func closeButtonPressed(_ sender: UIGestureRecognizer) {
+    func closePlacesVC() {
         navigationController?.popViewController(animated: true)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent
+        return UIStatusBarStyle.default
     }
+    
 }
-
-
-// MARK - Gesture recognizer delegate methods
-extension PlacesViewController: UIGestureRecognizerDelegate {
-    func didSwipeView(_ sender: UIPanGestureRecognizer) {
-        if sender.state == .ended {
-            navigationController?.popViewController(animated: true)
-        }
-    }
-}
-
 
 // MARK - Table view delegate methods
 extension PlacesViewController: UITableViewDelegate, UITableViewDataSource, CategoryHeaderDelegate {
@@ -135,7 +90,7 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource, Cate
         let item = parentCategory.allItems[indexPath.row]
         if let loc = PlacesData.locations[item] {
             cell.nameLabel.text = loc.title
-            cell.nameLabel.font = UIFont(name: "AvenirNext-Regular", size: 15)
+            cell.nameLabel.font = UIFont(name: "AvenirNext-Regular", size: 14)
             cell.markerImage.image = UIImage(named: "singlePlace")
             cell.locationIds = [item]
         } else {
@@ -146,7 +101,7 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource, Cate
                 cell.nameLabel.text = item
                 cell.locationIds = parentCategory.subCategories[item]
             }
-            cell.nameLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 15)
+            cell.nameLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 14)
             cell.markerImage.image = UIImage(named: "multiplePlaces")
         }
         cell.isHidden = true

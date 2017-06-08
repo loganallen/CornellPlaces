@@ -14,8 +14,9 @@ protocol CategoryHeaderDelegate {
 
 class CategoryTableViewHeader: UITableViewHeaderFooterView {
     
-    static let headerHeight: CGFloat = 60.0
+    static let headerHeight: CGFloat = 90.0
 
+    var wrapperView: UIView!
     var categoryImage: UIImageView!
     var categoryLabel: UILabel!
     var arrowImage: UIImageView!
@@ -28,27 +29,35 @@ class CategoryTableViewHeader: UITableViewHeaderFooterView {
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
-        contentView.backgroundColor = UIColor.white
+        contentView.backgroundColor = .white
         isExpanded = false
         
-        categoryImage = UIImageView(frame: CGRect(x: 16, y: 10, width: 40, height: 40))
-        contentView.addSubview(categoryImage)
+        wrapperView = UIView(frame: CGRect(x: 10, y: 4, width: UIScreen.main.bounds.width - 40, height: CategoryTableViewHeader.headerHeight - 16))
         
-        arrowImage = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 46, y: 18, width: 26, height: 26))
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor.placesDarkRed.cgColor, UIColor.placesRed.cgColor]
+        gradient.startPoint = CGPoint(x: 0.05, y: 0.5)
+        gradient.endPoint = CGPoint(x: 0.95, y: 0.5)
+        gradient.frame = wrapperView.frame
+        wrapperView.layer.insertSublayer(gradient, at: 0)
+        wrapperView.layer.cornerRadius = 4
+        
+        categoryImage = UIImageView(frame: CGRect(x: 26, y: wrapperView.frame.midY - 25, width: 50, height: 50))
+        wrapperView.addSubview(categoryImage)
+        
+        arrowImage = UIImageView(frame: CGRect(x: wrapperView.frame.maxX - 40, y: wrapperView.frame.midY - 10, width: 20, height: 20))
         arrowImage.image = #imageLiteral(resourceName: "downArrow")
-        contentView.addSubview(arrowImage)
+        wrapperView.addSubview(arrowImage)
         
-        categoryLabel = UILabel(frame: CGRect(x: categoryImage.frame.maxX + 12, y: 16, width: arrowImage.frame.minX - (categoryImage.frame.maxX + 24), height: 30))
-        categoryLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 18)
-        categoryLabel.textColor = UIColor.placesRed
-        contentView.addSubview(categoryLabel)
-        
-        customSeparator = UIView(frame: CGRect(x: 20, y: 59, width: UIScreen.main.bounds.width - 20, height: 1))
-        customSeparator.backgroundColor = UIColor.placesGray
-        contentView.addSubview(customSeparator)
+        categoryLabel = UILabel(frame: CGRect(x: categoryImage.frame.maxX + 16, y: wrapperView.frame.midY - 15, width: arrowImage.frame.minX - (categoryImage.frame.maxX + 16), height: 30))
+        categoryLabel.font = UIFont(name: "AvenirNext-Medium", size: 19)
+        categoryLabel.textColor = .white
+        wrapperView.addSubview(categoryLabel)
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CategoryTableViewHeader.categoryCellTapped(_:)))
-        addGestureRecognizer(gestureRecognizer)
+        wrapperView.addGestureRecognizer(gestureRecognizer)
+        
+        contentView.addSubview(wrapperView)
     }
     
     required init?(coder aDecoder: NSCoder) {

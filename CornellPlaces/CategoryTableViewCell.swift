@@ -10,7 +10,7 @@ import UIKit
 
 class CategoryTableViewCell: UITableViewCell {
     
-    static let cellHeight: CGFloat = 44.0
+    static let cellHeight: CGFloat = 36.0
     
     var nameLabel: UILabel!
     var markerImage: UIImageView!
@@ -20,19 +20,19 @@ class CategoryTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        backgroundColor = UIColor.placesLightGray
+        backgroundColor = .white
         selectionStyle = .none
         
-        markerImage = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 50, y: (bounds.height - 30)/2 + 1, width: 30, height: 30))
+        markerImage = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 100, y: 2, width: 30, height: 30))
         markerImage.backgroundColor = UIColor.gray
         addSubview(markerImage)
         
-        nameLabel = UILabel(frame: CGRect(x: 40, y: (bounds.height - 30)/2 + 1, width: markerImage.frame.minX - 46, height: 30))
-        nameLabel.textColor = UIColor.black
+        nameLabel = UILabel(frame: CGRect(x: 45, y: 3, width: markerImage.frame.minX - 50, height: 30))
+        nameLabel.textColor = UIColor.placesDarkRed
         addSubview(nameLabel)
         
-        customSeparator = UIView(frame: CGRect(x: 32, y: 43, width: UIScreen.main.bounds.width - 32, height: 1))
-        customSeparator.backgroundColor = UIColor.placesGray
+        customSeparator = UIView(frame: CGRect(x: 32, y: 35, width: UIScreen.main.bounds.width - 64, height: 1))
+        customSeparator.backgroundColor = UIColor.placesDarkRed
         addSubview(customSeparator)
     }
     
