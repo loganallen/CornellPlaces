@@ -23,8 +23,7 @@ class CategoryTableViewCell: UITableViewCell {
         backgroundColor = .white
         selectionStyle = .none
         
-        markerImage = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 100, y: 2, width: 30, height: 30))
-        markerImage.backgroundColor = UIColor.gray
+        markerImage = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 80, y: 5, width: 26, height: 26))
         addSubview(markerImage)
         
         nameLabel = UILabel(frame: CGRect(x: 45, y: 3, width: markerImage.frame.minX - 50, height: 30))

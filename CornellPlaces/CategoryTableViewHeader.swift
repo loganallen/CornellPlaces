@@ -32,24 +32,26 @@ class CategoryTableViewHeader: UITableViewHeaderFooterView {
         contentView.backgroundColor = .white
         isExpanded = false
         
-        wrapperView = UIView(frame: CGRect(x: 10, y: 4, width: UIScreen.main.bounds.width - 40, height: CategoryTableViewHeader.headerHeight - 16))
+        let wrapperSize = CGSize(width: UIScreen.main.bounds.width - 24, height: CategoryTableViewHeader.headerHeight - 12)
+        wrapperView = UIView(frame: CGRect(origin: CGPoint(x: 12, y: 6), size: wrapperSize))
         
         let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.placesDarkRed.cgColor, UIColor.placesRed.cgColor]
+        gradient.colors = [UIColor.placesDarkRed.cgColor, UIColor.placesLightRed.cgColor]
         gradient.startPoint = CGPoint(x: 0.05, y: 0.5)
         gradient.endPoint = CGPoint(x: 0.95, y: 0.5)
-        gradient.frame = wrapperView.frame
+        gradient.frame = CGRect(origin: .zero, size: wrapperSize)
         wrapperView.layer.insertSublayer(gradient, at: 0)
         wrapperView.layer.cornerRadius = 4
+        wrapperView.layer.masksToBounds = true
         
-        categoryImage = UIImageView(frame: CGRect(x: 26, y: wrapperView.frame.midY - 25, width: 50, height: 50))
+        categoryImage = UIImageView(frame: CGRect(x: 26, y: wrapperView.bounds.midY - 25, width: 50, height: 50))
         wrapperView.addSubview(categoryImage)
         
-        arrowImage = UIImageView(frame: CGRect(x: wrapperView.frame.maxX - 40, y: wrapperView.frame.midY - 10, width: 20, height: 20))
+        arrowImage = UIImageView(frame: CGRect(x: wrapperView.bounds.maxX - 40, y: wrapperView.bounds.midY - 10, width: 20, height: 20))
         arrowImage.image = #imageLiteral(resourceName: "downArrow")
         wrapperView.addSubview(arrowImage)
         
-        categoryLabel = UILabel(frame: CGRect(x: categoryImage.frame.maxX + 16, y: wrapperView.frame.midY - 15, width: arrowImage.frame.minX - (categoryImage.frame.maxX + 16), height: 30))
+        categoryLabel = UILabel(frame: CGRect(x: categoryImage.frame.maxX + 16, y: wrapperView.bounds.midY - 15, width: arrowImage.frame.minX - (categoryImage.frame.maxX + 16), height: 30))
         categoryLabel.font = UIFont(name: "AvenirNext-Medium", size: 19)
         categoryLabel.textColor = .white
         wrapperView.addSubview(categoryLabel)

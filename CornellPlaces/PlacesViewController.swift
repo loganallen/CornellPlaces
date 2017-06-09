@@ -91,7 +91,7 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource, Cate
         if let loc = PlacesData.locations[item] {
             cell.nameLabel.text = loc.title
             cell.nameLabel.font = UIFont(name: "AvenirNext-Regular", size: 14)
-            cell.markerImage.image = UIImage(named: "singlePlace")
+            cell.markerImage.image = #imageLiteral(resourceName: "placesIcon")
             cell.locationIds = [item]
         } else {
             if item == "" {
@@ -102,7 +102,7 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource, Cate
                 cell.locationIds = parentCategory.subCategories[item]
             }
             cell.nameLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 14)
-            cell.markerImage.image = UIImage(named: "multiplePlaces")
+            cell.markerImage.image = #imageLiteral(resourceName: "placesIconMultiple")
         }
         cell.isHidden = true
         if let (section, _) = currentlyExpandedSection {

@@ -33,8 +33,8 @@ class PlacesHeaderView: UIView {
     }
     
     func setup() {
-        placesImage = UIImageView(frame: CGRect(x: frame.width/2 - 60, y: frame.height/2 - 20, width: 40, height: 40))
-        placesImage.image = #imageLiteral(resourceName: "placesIcon")
+        placesImage = UIImageView(frame: CGRect(x: frame.midX - 22, y: frame.midY - 22, width: 44, height: 44))
+        placesImage.image = #imageLiteral(resourceName: "placesIconMultiple")
         addSubview(placesImage)
         
         placesTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))

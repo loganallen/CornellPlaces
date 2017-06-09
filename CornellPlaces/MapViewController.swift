@@ -133,6 +133,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, PlacesDe
         searchTableView.backgroundColor = .white
         searchTableView.separatorStyle = .none
         view.insertSubview(searchTableView, aboveSubview: searchBar)
+        searchTableView.isHidden = true
         print("done")
     }
     
@@ -188,7 +189,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, PlacesDe
         placesButton.layer.shadowRadius = 5
         placesButton.layer.cornerRadius = 4
         let placesImage = UIImageView(frame: CGRect(x: (buttonSize-buttonImageSize)/2, y: (buttonSize-36)/2, width: buttonImageSize, height: buttonImageSize))
-        placesImage.image = #imageLiteral(resourceName: "placesIcon")
+        placesImage.image = #imageLiteral(resourceName: "placesIconMultiple")
         placesButton.addSubview(placesImage)
         let placesLabel = UILabel(frame: CGRect(x: 0, y: 36, width: buttonSize, height: 20))
         placesLabel.backgroundColor = .clear
@@ -289,7 +290,7 @@ extension MapViewController: MKMapViewDelegate {
                 annotationView = dequeuedView
             } else {
                 annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: mapIdentifier)
-                annotationView.image = #imageLiteral(resourceName: "marker_red")
+                annotationView.image = #imageLiteral(resourceName: "placesIcon")
                 annotationView.centerOffset = CGPoint(x: 0, y: -annotationView.image!.size.height/2)
                 annotationView.canShowCallout = true
 //                let detailView = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: 40))
