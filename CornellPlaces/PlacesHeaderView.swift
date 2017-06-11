@@ -40,7 +40,7 @@ class PlacesHeaderView: UIView {
         placesTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         
         closeButton = UIButton(frame: CGRect(x: frame.width - 54, y: 36, width: 30, height: 30))
-        closeButton.setBackgroundImage(#imageLiteral(resourceName: "close_red"), for: .normal)
+        closeButton.setBackgroundImage(#imageLiteral(resourceName: "closeCross"), for: .normal)
         closeButton.layer.shadowColor = UIColor.black.cgColor
         closeButton.layer.shadowOffset = CGSize(width: 0, height: 2)
         closeButton.layer.shadowRadius = 2

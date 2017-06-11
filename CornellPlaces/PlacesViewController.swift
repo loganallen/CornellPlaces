@@ -62,7 +62,7 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource, Cate
         return PlacesData.categoryList.count
     }
     
-    // Header cell methods
+    // Category header cell methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let categoryObj = PlacesData.categories[PlacesData.categoryList[section]]!
         return categoryObj.subCategories.count + categoryObj.numberOfLocations
@@ -82,12 +82,13 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource, Cate
         return CategoryTableViewHeader.headerHeight
     }
     
-    // Normal cell methods
+    // Location (normal) cell methods
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? CategoryTableViewCell ?? CategoryTableViewCell(style: .default, reuseIdentifier: cellId)
         
         let parentCategory = PlacesData.categories[PlacesData.categoryList[indexPath.section]]!
         let item = parentCategory.allItems[indexPath.row]
+        
         if let loc = PlacesData.locations[item] {
             cell.nameLabel.text = loc.title
             cell.nameLabel.font = UIFont(name: "AvenirNext-Regular", size: 14)
@@ -104,10 +105,16 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource, Cate
             cell.nameLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 14)
             cell.markerImage.image = #imageLiteral(resourceName: "placesIconMultiple")
         }
+        
+        // Hide cells in non-expanded section
         cell.isHidden = true
         if let (section, _) = currentlyExpandedSection {
             cell.isHidden = indexPath.section != section
         }
+        
+        // Hide cell separator if last cell in section
+        cell.customSeparator.isHidden = (indexPath.row == parentCategory.allItems.count - 1)
+        
         return cell
     }
     
@@ -151,6 +158,5 @@ extension PlacesViewController: UITableViewDelegate, UITableViewDataSource, Cate
         
         tableView.endUpdates()
 
-//        tableView.scrollToRow(at: IndexPath(row: 0, section: section), at: .top, animated: true)
     }
 }

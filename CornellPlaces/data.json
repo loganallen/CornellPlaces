@@ -12,12 +12,12 @@
   {
   "Category":"Eateries",
   "SubCategory":"West Campus",
-  "LocIds":["8","27","40"]
+  "LocIds":["40","8","27"]
   },
   {
   "Category":"Eateries",
   "SubCategory":"North Campus",
-  "LocIds":["9","10","11","12","13"]
+  "LocIds":["13","9","10","12","11"]
   },
   {
   "Category":"Eateries",

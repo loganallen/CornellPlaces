@@ -23,14 +23,14 @@ class CategoryTableViewCell: UITableViewCell {
         backgroundColor = .white
         selectionStyle = .none
         
-        markerImage = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 80, y: 5, width: 26, height: 26))
+        markerImage = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 72, y: 5, width: 26, height: 26))
         addSubview(markerImage)
         
-        nameLabel = UILabel(frame: CGRect(x: 45, y: 3, width: markerImage.frame.minX - 50, height: 30))
+        nameLabel = UILabel(frame: CGRect(x: 42, y: 3, width: markerImage.frame.minX - 50, height: 30))
         nameLabel.textColor = UIColor.placesDarkRed
         addSubview(nameLabel)
         
-        customSeparator = UIView(frame: CGRect(x: 32, y: 35, width: UIScreen.main.bounds.width - 64, height: 1))
+        customSeparator = UIView(frame: CGRect(x: 30, y: 35, width: UIScreen.main.bounds.width - 60, height: 1))
         customSeparator.backgroundColor = UIColor.placesDarkRed
         addSubview(customSeparator)
     }

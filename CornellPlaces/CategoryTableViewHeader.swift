@@ -43,6 +43,10 @@ class CategoryTableViewHeader: UITableViewHeaderFooterView {
         wrapperView.layer.insertSublayer(gradient, at: 0)
         wrapperView.layer.cornerRadius = 4
         wrapperView.layer.masksToBounds = true
+        wrapperView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        wrapperView.layer.shadowColor = UIColor.black.cgColor
+        wrapperView.layer.shadowRadius = 5
+        wrapperView.layer.shadowOpacity = 0.4
         
         categoryImage = UIImageView(frame: CGRect(x: 26, y: wrapperView.bounds.midY - 25, width: 50, height: 50))
         wrapperView.addSubview(categoryImage)
